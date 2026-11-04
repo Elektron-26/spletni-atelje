@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Obrtnik</title>
+<meta name="description" content="">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+/* =====================================================================
+   SPLETNI ATELJE · PREDLOGA ZA OBRTNIKE
+   (mizarji, krovci, avtoservisi, inštalaterji, električarji, pleskarji ...)
+   Spremeni SAMO ta CONFIG. Vse ostalo se izriše samo.
+   Slike: datoteka v isti mapi (npr. "hero.jpg") ali URL. "" = nevtralno ozadje.
+   Česar ne veš, izpusti ([] ali ""). Ničesar ne izmišljuj.
+   ===================================================================== */
+const CONFIG = {
+  ime: "Mizarstvo Primer",
+  panoga: "Mizarstvo",                       // kratko, za oznako nad naslovom
+  kraj: "Ljutomer",
+  naslov: "Kuhinje in omare po meri, izdelane v domači delavnici",   // glavna obljuba (H1 pod imenom)
+  podnaslov: "Od izmere do montaže. Za Ljutomer, Mursko Soboto in okolico.",
+  odLeta: "1995",                            // "" če ni znano
+  ocena: { zvezdice: "4,9", stevilo: 23 },   // z Google profila; null če ni ocen
+
+  barve: { glavna: "#C2410C", temna: "#1C1917", ozadje: "#FAFAF9" },
+
+  slike: {
+    hero: "",                                // velika slika opravljenega dela
+    onas: "",                                // delavnica / mojster pri delu
+    dela: [                                  // galerija: slika + kratek opis
+      { slika: "", opis: "Kuhinja iz hrasta, Radenci" },
+      { slika: "", opis: "Vgradna omara, Ljutomer" },
+      { slika: "", opis: "Stopnice iz jesena" },
+      { slika: "", opis: "Otroška soba po meri" }
+    ]
+  },
+
+  kontakt: {
+    telefon: "+386 41 000 000",
+    email: "info@primer.si",
+    naslov: "Glavni trg 1, 9240 Ljutomer",
+    facebook: "",
+    instagram: ""
+  },
+
+  // tri kratke prednosti (konkretno, ne "kakovost in zanesljivost")
+  prednosti: [
+    { naslov: "Lastna delavnica", opis: "Vse izdelamo sami, brez posrednikov." },
+    { naslov: "Brezplačna izmera", opis: "Pridemo k vam, izmerimo in svetujemo." },
+    { naslov: "Rok v ponudbi", opis: "Ob ponudbi dobite tudi datum montaže." }
+  ],
+
+  storitve: [
+    { ime: "Kuhinje po meri", opis: "Masiva ali iveral, z montažo aparatov." },
+    { ime: "Vgradne omare", opis: "Za predsobe, spalnice in podstrešja." },
+    { ime: "Notranja vrata", opis: "Izdelava in vgradnja." },
+    { ime: "Stopnice", opis: "Lesene stopnice in obloge betonskih stopnic." },
+    { ime: "Popravila", opis: "Manjša popravila pohištva in vrat." }
+  ],
+
+  // kako poteka sodelovanje (3-4 koraki)
+  koraki: [
+    { naslov: "Pokličete ali pišete", opis: "Na kratko opišete, kaj potrebujete." },
+    { naslov: "Ogled in ponudba", opis: "Pridemo na izmero, ponudbo dobite v nekaj dneh." },
+    { naslov: "Izdelava in montaža", opis: "Izdelamo v delavnici in pri vas tudi montiramo." }
+  ],
+
+  onasNaslov: "Družinsko mizarstvo z dolgoletno tradicijo",
+  onasBesedilo: "Kratek, resničen opis: kdo ste, od kdaj delate, kaj vam je pomembno. Vzemi z njihove stare strani, Facebooka ali iz telefonskega pogovora.",
+
+  obmocje: ["Ljutomer", "Murska Sobota", "Gornja Radgona", "Radenci", "Ormož"],   // kje delate; [] če ni znano
+
+  // Pon ... Ned. null = zaprto. "" za celotno vrstico = ne prikaži delovnega časa
+  delovniCas: ["7:00-15:00", "7:00-15:00", "7:00-15:00", "7:00-15:00", "7:00-14:00", null, null],
+  opombaCas: "Ogled in izmera tudi po dogovoru.",
+
+  // ocene: SAMO resnične, prepisane z Googla/Facebooka. [] če jih ni.
+  ocene: [],
+
+  odzivniCas: "",             // npr. "Odgovorimo v 24 urah." — samo če to res drži, sicer ""
+  zemljevid: "Glavni trg 1, Ljutomer",
+  povprasevanje: true,        // obrazec za povpraševanje (pošlje email na kontakt.email)
+  predogled: true             // trak "Predogled · Spletni Atelje"; pred objavo false (in odstrani noindex)
+};
+</script>
+<style>
+:root{
+  --glavna:#C2410C; --temna:#1C1917; --ozadje:#FAFAF9;
+  --tekst:#44403C; --sivo:#78716C; --crta:rgba(28,25,23,.11); --kartica:#fff;
+  --r:14px; --senca:0 1px 2px rgba(28,25,23,.05),0 10px 30px rgba(28,25,23,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:Inter,system-ui,sans-serif;color:var(--tekst);background:var(--ozadje);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+h1,h2,h3{color:var(--temna);line-height:1.12;font-weight:800;letter-spacing:-.02em}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 24px;border-radius:10px;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:16px;transition:transform .15s,filter .15s}
+.btn:active{transform:scale(.97)}
+.btn-p{background:var(--glavna);color:#fff}
+.btn-p:hover{filter:brightness(1.08)}
+.btn-s{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.45)}
+.btn-o{background:#fff;color:var(--temna);border:1px solid var(--crta)}
+.ic{width:19px;height:19px;flex:none}
+.ph{background:linear-gradient(135deg,#d6d3d1,#a8a29e);position:relative}
+.ph::after{content:"Vaša fotografija";position:absolute;inset:auto 0 10px 0;text-align:center;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.img{background-size:cover;background-position:center}
+
+.trak{background:var(--temna);color:#e7e5e4;font-size:13px;text-align:center;padding:8px 16px}
+.trak b{color:#fff}
+
+nav{position:sticky;top:0;z-index:20;background:rgba(250,250,249,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--crta)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:12px}
+.logo{font-weight:800;font-size:18px;color:var(--temna);text-decoration:none;letter-spacing:-.01em}
+.navl{display:flex;gap:24px;font-size:14px;font-weight:500}
+.navl a{text-decoration:none;color:var(--sivo)}
+.navl a:hover{color:var(--temna)}
+.navtel{padding:10px 16px;font-size:14px}
+@media(max-width:860px){.navl{display:none}}
+
+.hero{position:relative;min-height:min(86vh,700px);display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.hero .bg{position:absolute;inset:0}
+.hero .bg::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,10,9,.15) 0%,rgba(12,10,9,.45) 50%,rgba(12,10,9,.9) 100%);z-index:1}
+.hero .wrap{width:100%;position:relative;z-index:2;padding:120px 20px 80px}
+@media(max-width:860px){.hero .wrap{padding-bottom:112px}}
+.eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;opacity:.9}
+.hero .ime{font-size:16px;font-weight:600;margin-top:14px;opacity:.95}
+.hero h1{color:#fff;font-size:clamp(34px,6.4vw,62px);margin:6px 0 14px;max-width:18ch}
+.hero p.pod{font-size:clamp(17px,2.2vw,20px);max-width:44ch;opacity:.92}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.zaupanje{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px;font-size:14px;opacity:.95}
+.zaupanje span{display:inline-flex;align-items:center;gap:7px}
+.zv{color:#FBBF24;letter-spacing:1px}
+
+section{padding:80px 0}
+.oznaka{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--glavna);font-weight:700;margin-bottom:10px}
+h2{font-size:clamp(28px,4.2vw,40px);margin-bottom:14px}
+.uvod{color:var(--sivo);max-width:58ch;font-size:17px}
+
+.pred{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:-40px;position:relative;z-index:3}
+.pred div{background:var(--kartica);border-radius:var(--r);padding:22px;box-shadow:var(--senca);border-top:3px solid var(--glavna)}
+.pred b{display:block;font-size:17px;color:var(--temna);margin-bottom:4px}
+.pred span{color:var(--sivo);font-size:15px}
+@media(max-width:860px){.pred{grid-template-columns:1fr;margin-top:24px}}
+
+.storitve{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-top:28px}
+.st{background:#fff;border:1px solid var(--crta);border-radius:var(--r);padding:20px}
+.st b{display:block;color:var(--temna);font-size:17px;margin-bottom:4px}
+.st span{color:var(--sivo);font-size:15px}
+
+.dela{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:28px}
+.delo{border-radius:var(--r);overflow:hidden;background:#fff;box-shadow:var(--senca)}
+.delo .img{aspect-ratio:4/3}
+.delo p{padding:12px 16px;font-size:14px;font-weight:500;color:var(--temna)}
+@media(min-width:861px){.dela{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:520px){.dela{grid-template-columns:1fr}}
+
+.koraki{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:28px;counter-reset:k}
+.kor{background:#fff;border-radius:var(--r);padding:22px;box-shadow:var(--senca);counter-increment:k}
+.kor::before{content:counter(k);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--glavna);color:#fff;font-weight:800;margin-bottom:12px}
+.kor b{display:block;color:var(--temna);font-size:17px;margin-bottom:4px}
+.kor span{color:var(--sivo);font-size:15px}
+
+.onas{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.onas .img{aspect-ratio:4/5;border-radius:20px}
+@media(max-width:860px){.onas{grid-template-columns:1fr;gap:26px}.onas .img{aspect-ratio:4/3}}
+
+.ocene{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:24px}
+.ocena{background:#fff;padding:22px;border-radius:var(--r);box-shadow:var(--senca)}
+.ocena p{margin:8px 0 10px;font-size:15.5px}
+.ocena small{color:var(--sivo)}
+
+.obm{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.obm span{padding:7px 13px;border-radius:999px;background:#fff;border:1px solid var(--crta);font-size:14px}
+.dva{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:28px}
+@media(max-width:860px){.dva{grid-template-columns:1fr}}
+.kart{background:#fff;border-radius:var(--r);box-shadow:var(--senca);padding:26px}
+.cas{width:100%;border-collapse:collapse;font-size:15px}
+.cas td{padding:8px 0;border-bottom:1px solid var(--crta)}
+.cas td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.cas tr.danes td{font-weight:700;color:var(--temna)}
+.op{color:var(--sivo);font-size:14px;margin-top:12px}
+
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+form .f{grid-column:1/-1}
+label{font-size:13px;font-weight:600;color:var(--sivo);display:grid;gap:6px}
+input,select,textarea{font:inherit;font-size:16px;padding:13px 14px;border-radius:10px;border:1px solid var(--crta);background:#fff;color:var(--tekst);width:100%}
+input:focus,select:focus,textarea:focus{outline:2px solid color-mix(in srgb,var(--glavna) 35%,transparent);border-color:var(--glavna)}
+.rassure{font-size:13px;color:var(--sivo);text-align:center}
+@media(max-width:520px){form{grid-template-columns:1fr}.kart{padding:20px}}
+
+.kl{display:grid;gap:10px}
+.kl a{display:flex;gap:12px;align-items:center;text-decoration:none;padding:13px 14px;border:1px solid var(--crta);border-radius:10px;font-size:15px;background:#fff}
+.kl a:hover{border-color:var(--glavna)}
+.kl .ic{color:var(--glavna)}
+.map{border-radius:var(--r);overflow:hidden;min-height:320px;box-shadow:var(--senca)}
+.map iframe{width:100%;height:100%;min-height:320px;border:0;display:block}
+
+.konec{background:var(--temna);color:#e7e5e4;border-radius:22px;padding:44px 32px;text-align:center}
+.konec h2{color:#fff}
+.konec p{opacity:.85;margin-bottom:22px}
+
+footer{padding:36px 0 110px;color:var(--sivo);font-size:14px;border-top:1px solid var(--crta)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+.mob{position:fixed;left:12px;right:12px;bottom:12px;z-index:30;display:none;gap:10px}
+.mob .btn{flex:1;padding:15px;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+@media(max-width:860px){.mob{display:flex}}
+
+.rev{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.rev.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rev{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+(function(){
+const C = CONFIG, $ = s => document.querySelector(s);
+const r = document.documentElement.style;
+r.setProperty('--glavna', C.barve.glavna); r.setProperty('--temna', C.barve.temna); r.setProperty('--ozadje', C.barve.ozadje);
+document.title = C.ime + " · " + C.kraj;
+document.querySelector('meta[name=description]').content = C.naslov + ". " + C.podnaslov;
+if(!C.predogled){ const m=document.querySelector('meta[name=robots]'); if(m) m.remove(); }
+
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const img = (src, cls="") => src ? `<div class="img ${cls}" style="background-image:url('${esc(src)}')"></div>` : `<div class="img ph ${cls}"></div>`;
+const tel = C.kontakt.telefon, telHref = "tel:" + tel.replace(/[^\d+]/g,"");
+const dni = ["Ponedeljek","Torek","Sreda","Četrtek","Petek","Sobota","Nedelja"];
+const now = new Date(), di = (now.getDay()+6)%7;
+const I = {
+  tel:'<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>',
+  mail:'<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>',
+  pin:'<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+  fb:'<svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8V6c0-.8.2-1 1-1h2V2h-3c-3 0-4 1.6-4 4v2H8v3h2v11h4V11h2.6l.4-3z"/></svg>',
+  ig:'<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg>',
+  ok:'<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>'
+};
+const imaCas = Array.isArray(C.delovniCas) && C.delovniCas.some(Boolean);
+const P = C.povprasevanje && C.kontakt.email;
+
+let h = "";
+if(C.predogled) h += `<div class="trak"><b>Predogled</b> · Brezplačen osnutek nove spletne strani, pripravil Spletni Atelje</div>`;
+h += `<nav><div class="wrap"><a class="logo" href="#">${esc(C.ime)}</a>
+<div class="navl"><a href="#storitve">Storitve</a>${C.slike.dela?.length?'<a href="#dela">Opravljena dela</a>':''}<a href="#onas">O nas</a>${P?'<a href="#povprasevanje">Povpraševanje</a>':''}<a href="#kontakt">Kontakt</a></div>
+<a class="btn btn-p navtel" href="${telHref}">${I.tel} Pokliči</a></div></nav>`;
+
+// HERO: kaj, za koga, kaj narediti, zakaj zaupati
+const zaupanje = [];
+if(C.ocena) zaupanje.push(`<span><span class="zv">★</span> ${esc(C.ocena.zvezdice)} na Googlu · ${esc(C.ocena.stevilo)} mnenj</span>`);
+if(C.odLeta) zaupanje.push(`<span>${I.ok} Od leta ${esc(C.odLeta)}</span>`);
+if(C.obmocje?.length) zaupanje.push(`<span>${I.pin} ${esc(C.kraj)} in okolica</span>`);
+h += `<header class="hero">${img(C.slike.hero,"bg")}<div class="wrap">
+<div class="eyebrow">${esc(C.panoga)} · ${esc(C.kraj)}</div>
+<div class="ime">${esc(C.ime)}</div>
+<h1>${esc(C.naslov)}</h1><p class="pod">${esc(C.podnaslov)}</p>
+<div class="cta"><a class="btn btn-p" href="${telHref}">${I.tel} Pokliči ${esc(tel)}</a>${P?'<a class="btn btn-s" href="#povprasevanje">Pošlji povpraševanje</a>':''}</div>
+${zaupanje.length?`<div class="zaupanje">${zaupanje.join("")}</div>`:''}
+</div></header>`;
+
+if(C.prednosti?.length) h += `<div class="wrap"><div class="pred">${C.prednosti.map(p=>`<div class="rev"><b>${esc(p.naslov)}</b><span>${esc(p.opis)}</span></div>`).join("")}</div></div>`;
+
+if(C.storitve?.length) h += `<section id="storitve"><div class="wrap"><div class="oznaka">Storitve</div><h2>Kaj naredimo za vas</h2>
+<div class="storitve">${C.storitve.map(s=>`<div class="st rev"><b>${esc(s.ime)}</b>${s.opis?`<span>${esc(s.opis)}</span>`:''}</div>`).join("")}</div></div></section>`;
+
+if(C.slike.dela?.length) h += `<section id="dela" style="background:#fff"><div class="wrap"><div class="oznaka">Opravljena dela</div><h2>Poglejte, kaj smo že naredili</h2>
+<div class="dela">${C.slike.dela.map(d=>`<div class="delo rev">${img(d.slika)}${d.opis?`<p>${esc(d.opis)}</p>`:''}</div>`).join("")}</div></div></section>`;
+
+if(C.ocene?.length) h += `<section style="padding-bottom:0"><div class="wrap"><div class="oznaka">Mnenja strank</div><h2>Kaj pravijo stranke</h2>
+<div class="ocene">${C.ocene.map(o=>`<div class="ocena rev"><div class="zv">${"★".repeat(o.zvezdice||5)}</div><p>“${esc(o.besedilo)}”</p><small>${esc(o.avtor)} · ${esc(o.vir||"Google")}</small></div>`).join("")}</div></div></section>`;
+
+if(C.koraki?.length) h += `<section><div class="wrap"><div class="oznaka">Kako poteka</div><h2>Od klica do končanega dela</h2>
+<div class="koraki">${C.koraki.map(k=>`<div class="kor rev"><b>${esc(k.naslov)}</b><span>${esc(k.opis)}</span></div>`).join("")}</div></div></section>`;
+
+h += `<section id="onas" style="background:#fff"><div class="wrap onas">${img(C.slike.onas,"rev")}
+<div class="rev"><div class="oznaka">O nas</div><h2>${esc(C.onasNaslov)}</h2><p class="uvod">${esc(C.onasBesedilo)}</p>
+${C.obmocje?.length?`<p style="margin-top:22px;font-weight:600;color:var(--temna)">Kje delamo</p><div class="obm">${C.obmocje.map(k=>`<span>${esc(k)}</span>`).join("")}</div>`:''}
+</div></div></section>`;
+
+if(P) h += `<section id="povprasevanje"><div class="wrap" style="max-width:760px"><div class="oznaka">Povpraševanje</div><h2>Opišite, kaj potrebujete</h2>
+<p class="uvod">Izpolnite obrazec in oglasimo se vam${C.odzivniCas?` (${esc(C.odzivniCas.replace(/\.$/,"").toLowerCase())})`:''}. Za hitrejši dogovor nas pokličite na ${esc(tel)}.</p>
+<form id="pf" class="kart rev">
+<label>Ime in priimek<input name="ime" required autocomplete="name"></label>
+<label>Telefon<input name="tel" type="tel" required autocomplete="tel"></label>
+<label>Kraj<input name="kraj" autocomplete="address-level2"></label>
+<label>Storitev<select name="st">${(C.storitve||[]).map(s=>`<option>${esc(s.ime)}</option>`).join("")}<option>Drugo</option></select></label>
+<label class="f">Kratek opis (mere, material, kdaj bi želeli)<textarea name="msg" rows="4"></textarea></label>
+<button class="btn btn-p f" type="submit">Pošlji povpraševanje</button>
+<p class="rassure f">Povpraševanje je brezplačno in vas ne obvezuje.</p>
+</form></div></section>`;
+
+h += `<section id="kontakt" style="background:#fff"><div class="wrap"><div class="oznaka">Kontakt</div><h2>Pokličite ali nas obiščite</h2>
+<div class="dva"><div class="kart rev"><div class="kl">
+<a href="${telHref}">${I.tel}<b>${esc(tel)}</b></a>
+${C.kontakt.email?`<a href="mailto:${esc(C.kontakt.email)}">${I.mail}${esc(C.kontakt.email)}</a>`:''}
+<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(C.zemljevid)}" target="_blank" rel="noopener">${I.pin}${esc(C.kontakt.naslov)}</a>
+${C.kontakt.facebook?`<a href="${esc(C.kontakt.facebook)}" target="_blank" rel="noopener">${I.fb}Facebook</a>`:''}
+${C.kontakt.instagram?`<a href="${esc(C.kontakt.instagram)}" target="_blank" rel="noopener">${I.ig}Instagram</a>`:''}</div>
+${imaCas?`<table class="cas" style="margin-top:20px">${dni.map((d,i)=>`<tr class="${i===di?'danes':''}"><td>${d}${i===di?' · danes':''}</td><td>${C.delovniCas[i]?C.delovniCas[i].replace("-"," – "):"zaprto"}</td></tr>`).join("")}</table>`:''}
+${C.opombaCas?`<p class="op">${esc(C.opombaCas)}</p>`:''}
+</div><div class="map rev"><iframe loading="lazy" title="Zemljevid" src="https://maps.google.com/maps?q=${encodeURIComponent(C.zemljevid)}&z=14&output=embed"></iframe></div></div>
+<div class="konec rev" style="margin-top:44px"><h2>Imate projekt v mislih?</h2><p>Pokličite in se dogovorimo za ogled.</p><a class="btn btn-p" href="${telHref}">${I.tel} Pokliči ${esc(tel)}</a></div>
+</div></section>`;
+
+h += `<footer><div class="wrap"><span>© ${now.getFullYear()} ${esc(C.ime)} · ${esc(C.kontakt.naslov)}</span><span>Izdelava: Spletni Atelje</span></div></footer>`;
+h += `<div class="mob"><a class="btn btn-p" href="${telHref}">${I.tel} Pokliči</a>${P?'<a class="btn btn-o" href="#povprasevanje">Povpraševanje</a>':''}</div>`;
+$("#app").innerHTML = h;
+
+const pf = $("#pf");
+if(pf) pf.onsubmit = e => {
+  e.preventDefault(); const f = Object.fromEntries(new FormData(pf));
+  const body = `Povpraševanje s spletne strani\n\nIme: ${f.ime}\nTelefon: ${f.tel}\nKraj: ${f.kraj||"-"}\nStoritev: ${f.st}\n\n${f.msg||""}`;
+  location.href = `mailto:${C.kontakt.email}?subject=${encodeURIComponent("Povpraševanje: "+f.st+(f.kraj?", "+f.kraj:""))}&body=${encodeURIComponent(body)}`;
+};
+const io = new IntersectionObserver(es=>es.forEach(x=>{ if(x.isIntersecting){ x.target.classList.add("in"); io.unobserve(x.target);} }),{threshold:.1});
+document.querySelectorAll(".rev").forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>
