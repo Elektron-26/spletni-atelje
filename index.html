@@ -950,5 +950,150 @@
   }
 </script>
 
+<!-- SA-ENHANCE v1: vizuali in gibanje (dodano 4.11.2026) -->
+<style id="sa-enhance-css">
+:root{--sa-ease:cubic-bezier(.16,1,.3,1)}
+/* ambient hero */
+.hero{position:relative;isolation:isolate;overflow:hidden}html,body{overflow-x:clip}
+.sa-blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;z-index:-1;pointer-events:none;animation:saDrift 18s ease-in-out infinite alternate}
+.sa-blob.b1{width:420px;height:420px;background:radial-gradient(circle,rgba(168,93,50,.32),transparent 70%);top:-80px;right:-60px}
+.sa-blob.b2{width:340px;height:340px;background:radial-gradient(circle,rgba(79,122,92,.22),transparent 70%);bottom:-40px;left:-80px;animation-delay:-6s}
+@keyframes saDrift{0%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-20px) scale(1.08)}100%{transform:translate(-20px,25px) scale(.95)}}
+/* hero entrance */
+.sa-in{opacity:0;transform:translateY(18px);animation:saUp .8s var(--sa-ease) forwards}
+@keyframes saUp{to{opacity:1;transform:none}}
+
+/* blueprint "gradnja" animacija */
+.sa-build{position:relative;margin-top:.8rem;border:1.5px solid var(--brass);border-radius:12px;background:var(--paper-raised);overflow:hidden;box-shadow:0 20px 50px rgba(38,32,25,.12)}
+.sa-bar{display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid var(--line);background:var(--paper-sunken)}
+.sa-bar i{width:8px;height:8px;border-radius:50%;background:var(--line-strong)}
+.sa-bar i:nth-child(1){background:#d98b6a}.sa-bar i:nth-child(2){background:#e2b86a}.sa-bar i:nth-child(3){background:#8fb08f}
+.sa-bar span{margin-left:8px;font-family:"IBM Plex Mono",monospace;font-size:.62rem;color:var(--ink-faint);background:var(--paper-raised);padding:2px 8px;border-radius:6px;flex:1}
+.sa-page{position:relative;padding:14px;display:grid;gap:9px}
+.sa-blk{border-radius:7px;background:var(--line);position:relative;overflow:hidden}
+.sa-blk::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:translateX(-100%);animation:saShine 2.4s ease-in-out infinite}
+@keyframes saShine{to{transform:translateX(100%)}}
+.sa-hero-blk{height:74px;animation:saHeroFill 9s var(--sa-ease) infinite}
+.sa-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.sa-row .sa-blk{height:46px}
+.sa-row .sa-blk:nth-child(1){animation:saFill1 9s var(--sa-ease) infinite}
+.sa-row .sa-blk:nth-child(2){animation:saFill2 9s var(--sa-ease) infinite}
+.sa-row .sa-blk:nth-child(3){animation:saFill3 9s var(--sa-ease) infinite}
+.sa-line{height:7px;width:var(--w,80%);animation:saText 9s var(--sa-ease) infinite}
+.sa-btn{height:22px;width:42%;border-radius:999px;animation:saBtn 9s var(--sa-ease) infinite}
+@keyframes saHeroFill{0%,30%{background:var(--line)}40%,92%{background:linear-gradient(120deg,#7a3f1f,#a85d32 60%,#d4915f)}100%{background:var(--line)}}
+@keyframes saFill1{0%,48%{background:var(--line)}55%,92%{background:#e9cfb8}100%{background:var(--line)}}
+@keyframes saFill2{0%,52%{background:var(--line)}59%,92%{background:#cfdccf}100%{background:var(--line)}}
+@keyframes saFill3{0%,56%{background:var(--line)}63%,92%{background:#ead9b0}100%{background:var(--line)}}
+@keyframes saText{0%,18%{background:var(--line)}26%,92%{background:var(--ink-soft)}100%{background:var(--line)}}
+@keyframes saBtn{0%,66%{background:var(--line);transform:scale(1)}72%{background:var(--brass);transform:scale(1.08)}76%,92%{background:var(--brass);transform:scale(1)}100%{background:var(--line)}}
+.sa-stage{display:flex;justify-content:space-between;gap:6px;margin-top:1rem;font-family:"IBM Plex Mono",monospace;font-size:.66rem;color:var(--ink-faint);position:relative}
+.sa-stage b{font-weight:500;padding:4px 8px;border-radius:6px;border:1px solid var(--line);transition:all .3s}
+.sa-stage b.on{color:#fff;background:var(--brass);border-color:var(--brass)}
+.sa-prog{height:3px;border-radius:3px;background:var(--line);margin-top:.6rem;overflow:hidden}
+.sa-prog div{height:100%;width:100%;background:var(--brass);transform-origin:left;animation:saProg 9s linear infinite}
+@keyframes saProg{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.sa-cursor{position:absolute;width:16px;height:16px;z-index:3;animation:saCur 9s var(--sa-ease) infinite;filter:drop-shadow(0 2px 3px rgba(0,0,0,.3))}
+@keyframes saCur{0%{transform:translate(40px,140px)}25%{transform:translate(160px,60px)}45%{transform:translate(90px,110px)}70%{transform:translate(60px,250px)}73%{transform:translate(60px,250px) scale(.85)}76%{transform:translate(60px,250px) scale(1)}100%{transform:translate(40px,140px)}}
+
+/* marquee */
+.sa-marq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper-sunken);overflow:hidden;padding:14px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.sa-track{display:flex;gap:2.4rem;width:max-content;animation:saMarq 38s linear infinite}
+.sa-marq:hover .sa-track{animation-play-state:paused}
+.sa-track span{display:inline-flex;align-items:center;gap:.6rem;font-family:"IBM Plex Mono",monospace;font-size:.85rem;color:var(--ink-soft);white-space:nowrap}
+.sa-track span::before{content:"✦";color:var(--brass);font-size:.8rem}
+@keyframes saMarq{to{transform:translateX(-50%)}}
+
+/* stats */
+.sa-stats{max-width:var(--container);margin:0 auto;padding:2.6rem clamp(1.25rem,5vw,3rem);display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.sa-stat{position:relative;padding:1.2rem 1.2rem 1.1rem;border:1px solid var(--line);border-radius:16px;background:var(--paper-raised);overflow:hidden;transition:transform .35s var(--sa-ease),box-shadow .35s var(--sa-ease)}
+.sa-stat:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(38,32,25,.1)}
+.sa-stat::before{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:var(--brass);transform:scaleX(0);transform-origin:left;transition:transform 1s var(--sa-ease) .2s}
+.sa-stat.vis::before{transform:scaleX(1)}
+.sa-stat strong{display:block;font-family:Fraunces,serif;font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:500;color:var(--ink);line-height:1.05}
+.sa-stat small{display:block;margin-top:.35rem;color:var(--ink-soft);font-size:.9rem;line-height:1.35}
+@media(max-width:820px){.sa-stats{grid-template-columns:1fr 1fr}}
+
+/* scroll reveal */
+.sa-rev{opacity:0;transform:translateY(26px);transition:opacity .8s var(--sa-ease),transform .8s var(--sa-ease);transition-delay:var(--d,0ms)}
+.sa-rev.vis{opacity:1;transform:none}
+
+/* kartice, koraki, mehanizem */
+.case-card{transition:transform .45s var(--sa-ease),box-shadow .45s var(--sa-ease)}
+.case-card:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(38,32,25,.16)}
+.case-shot{overflow:hidden;position:relative}
+.case-shot img{transition:transform 1.2s var(--sa-ease)}
+.case-card:hover .case-shot img{transform:scale(1.05)}
+.case-shot::after{content:"Odpri v živo ↗";position:absolute;right:12px;bottom:12px;font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:#fff;background:rgba(38,32,25,.78);padding:6px 10px;border-radius:999px;opacity:0;transform:translateY(6px);transition:all .35s var(--sa-ease)}
+.case-card:hover .case-shot::after{opacity:1;transform:none}
+.mech-cell,.step{transition:transform .35s var(--sa-ease),box-shadow .35s var(--sa-ease),border-color .35s}
+.mech-cell:hover,.step:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(38,32,25,.09);border-color:var(--brass)}
+.steps{position:relative}
+.sa-stepline{position:absolute;left:0;right:0;top:-14px;height:3px;border-radius:3px;background:var(--line);overflow:hidden}
+.sa-stepline div{height:100%;background:linear-gradient(90deg,var(--brass),#d4915f);transform:scaleX(var(--p,0));transform-origin:left;transition:transform .2s linear}
+
+/* section ločila (blueprint merilo) */
+.sa-ruler{max-width:var(--container);margin:0 auto;padding:0 clamp(1.25rem,5vw,3rem);display:flex;align-items:center;gap:12px;font-family:"IBM Plex Mono",monospace;font-size:.68rem;color:var(--ink-faint);letter-spacing:.08em}
+.sa-ruler::before,.sa-ruler::after{content:"";flex:1;height:10px;background:repeating-linear-gradient(90deg,var(--line-strong) 0 1px,transparent 1px 12px) bottom/100% 6px no-repeat,linear-gradient(var(--line-strong),var(--line-strong)) bottom/100% 1px no-repeat}
+
+/* CTA spotlight */
+.cta-panel{position:relative;overflow:hidden}
+.cta-panel::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;left:var(--mx,70%);top:var(--my,20%);transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(212,145,95,.35),transparent 65%);pointer-events:none;transition:left .25s ease-out,top .25s ease-out}
+.cta-panel>*{position:relative}
+.btn-primary{position:relative;overflow:hidden}
+.btn-primary::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);animation:saBtnShine 4.5s ease-in-out infinite}
+@keyframes saBtnShine{0%,70%{left:-60%}100%{left:130%}}
+
+@media(prefers-reduced-motion:reduce){.sa-blob,.sa-track,.sa-blk::after,.sa-hero-blk,.sa-row .sa-blk,.sa-line,.sa-btn,.sa-prog div,.sa-cursor,.btn-primary::after{animation:none!important}.sa-rev,.sa-in{opacity:1!important;transform:none!important;transition:none!important;animation:none!important}}
+</style>
+<script id="sa-enhance-js">
+(function(){
+const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const hero=document.querySelector('.hero');
+if(hero){
+  hero.insertAdjacentHTML('afterbegin','<span class="sa-blob b1"></span><span class="sa-blob b2"></span>');
+  const col=hero.querySelector('.hero-grid > div');
+  if(col&&!rm)[...col.children].forEach((c,i)=>{c.classList.add('sa-in');c.style.animationDelay=(120+i*110)+'ms'});
+  const bp=hero.querySelector('.blueprint');
+  if(bp){
+    bp.innerHTML='<div class="tag">// PROJEKT_001 · gradnja v živo</div>'+
+    '<div class="sa-build"><div class="sa-bar"><i></i><i></i><i></i><span>vasa-stran.si</span></div>'+
+    '<div class="sa-page"><svg class="sa-cursor" viewBox="0 0 24 24"><path d="M4 2l16 9-7 2-3 7z" fill="#262019" stroke="#fff" stroke-width="1.5"/></svg>'+
+    '<div class="sa-blk sa-hero-blk"></div><div class="sa-blk sa-line" style="--w:78%"></div><div class="sa-blk sa-line" style="--w:56%"></div>'+
+    '<div class="sa-row"><div class="sa-blk"></div><div class="sa-blk"></div><div class="sa-blk"></div></div>'+
+    '<div class="sa-blk sa-line" style="--w:88%"></div><div class="sa-blk sa-line" style="--w:64%"></div><div class="sa-blk sa-btn"></div></div></div>'+
+    '<div class="sa-stage"><b data-s="0">WIREFRAME</b><b data-s="1">COPY</b><b data-s="2">BUILD</b><b data-s="3">V ŽIVO</b></div><div class="sa-prog"><div></div></div>';
+    const bs=bp.querySelectorAll('.sa-stage b');let t0=performance.now();
+    const tick=t=>{const p=((t-t0)%9000)/9000;const s=p<.25?0:p<.45?1:p<.7?2:3;bs.forEach((b,i)=>b.classList.toggle('on',i===s));requestAnimationFrame(tick)};
+    if(!rm)requestAnimationFrame(tick);else bs[3].classList.add('on');
+  }
+  const items=['Spletne strani po meri','Spletne aplikacije','AI asistenti','Next.js','React','Supabase','Stripe plačila','Claude AI','Gemini AI','Brevo email','PWA aplikacije','Prilagojeno telefonu','Vaša domena','Plačilo ob predaji'];
+  const row=items.map(x=>'<span>'+x+'</span>').join('');
+  hero.insertAdjacentHTML('afterend','<div class="sa-marq" aria-hidden="true"><div class="sa-track">'+row+row+'</div></div>'+
+   '<div class="sa-stats">'+
+   '<div class="sa-stat sa-rev"><strong data-n="3">0</strong><small>aplikacije v živo, ki jih lahko preizkusite</small></div>'+
+   '<div class="sa-stat sa-rev" style="--d:90ms"><strong data-n="10">0</strong><small>jezikov v aplikaciji Vitali</small></div>'+
+   '<div class="sa-stat sa-rev" style="--d:180ms"><strong data-n="2" data-pre="1–" data-suf=" tedna">0</strong><small>za predstavitveno stran</small></div>'+
+   '<div class="sa-stat sa-rev" style="--d:270ms"><strong data-n="0" data-suf=" €">0</strong><small>predplačila, plačate ob predaji</small></div></div>');
+}
+// ločila med sekcijami
+const secs=[...document.querySelectorAll('main > section.section')];
+const labels=['§ 01 · PROBLEM','§ 02 · REŠITEV','§ 03 · DOKAZ','§ 04 · POTEK','§ 05 · VPRAŠANJA','§ 06 · ZAČETEK'];
+secs.forEach((s,i)=>{const r=document.createElement('div');r.className='sa-ruler';r.textContent=labels[i]||('§ 0'+(i+1));s.before(r)});
+// reveal
+const sel='.section .eyebrow,.section h2,.section .lede,.mech-cell,.ai-strip,.ai-grid > *,.case-card,.step,.faq-list > *,.cta-panel,.split > *,.proof-transition';
+document.querySelectorAll(sel).forEach(el=>{if(el.closest('.hero'))return;el.classList.add('sa-rev');const sib=[...el.parentElement.children].filter(c=>c.matches(sel));const k=sib.indexOf(el);if(k>0)el.style.setProperty('--d',Math.min(k,6)*90+'ms')});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);const n=e.target.querySelector('[data-n]');if(n)count(n)}}),{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.sa-rev').forEach(el=>io.observe(el));
+function count(el){const N=+el.dataset.n,pre=el.dataset.pre||'',suf=el.dataset.suf||'';if(rm||N===0){el.textContent=pre+N+suf;return}const t0=performance.now(),D=1300;const f=t=>{const p=Math.min((t-t0)/D,1),v=Math.round(N*(1-Math.pow(1-p,3)));el.textContent=pre+v+suf;if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
+// linija korakov
+const st=document.querySelector('.steps');
+if(st){const l=document.createElement('div');l.className='sa-stepline';l.innerHTML='<div></div>';st.prepend(l);const bar=l.firstChild;
+ const upd=()=>{const r=st.getBoundingClientRect(),vh=innerHeight;const p=Math.min(Math.max((vh*.85-r.top)/(r.height+vh*.3),0),1);bar.style.setProperty('--p',p.toFixed(3))};addEventListener('scroll',upd,{passive:true});upd()}
+// CTA spotlight
+document.querySelectorAll('.cta-panel').forEach(p=>p.addEventListener('pointermove',e=>{const r=p.getBoundingClientRect();p.style.setProperty('--mx',(e.clientX-r.left)+'px');p.style.setProperty('--my',(e.clientY-r.top)+'px')}));
+})();
+</script>
+
 </body>
 </html>
