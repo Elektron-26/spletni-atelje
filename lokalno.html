@@ -373,7 +373,7 @@ f2.addEventListener('load',()=>{try{const d=f2.contentDocument;d.querySelectorAl
   function banner(){
     if(document.querySelector('.sa-ck'))return;
     var b=document.createElement('div');b.className='sa-ck';b.setAttribute('role','dialog');b.setAttribute('aria-label','Piškotki');
-    b.innerHTML='<p>Z Google Analytics merim, koliko ljudi obišče stran in kaj jih zanima. Piškotke naložim le, če se strinjate.</p><div><button type="button" class="n">Zavrni</button><button type="button" class="y">Sprejmi</button></div>';
+    b.innerHTML='<p>Z Google Analytics merim, koliko ljudi obišče stran in kaj jih zanima. Piškotke naložim le, če se strinjate. <a href="zasebnost.html" style="color:inherit;opacity:.75">Več</a></p><div><button type="button" class="n">Zavrni</button><button type="button" class="y">Sprejmi</button></div>';
     document.body.appendChild(b);
     requestAnimationFrame(function(){b.classList.add('on')});
     function close(v){set(v);b.classList.remove('on');setTimeout(function(){b.remove()},400);if(v==='1')load()}
@@ -408,7 +408,7 @@ f2.addEventListener('load',()=>{try{const d=f2.contentDocument;d.querySelectorAl
     var c=get();
     if(c==='1')load();else if(c!=='0'&&window.top===window.self)setTimeout(banner,1200);
     var ft=document.querySelector('footer');
-    if(ft&&!ft.querySelector('.sa-ck-link')){var l=document.createElement('button');l.type='button';l.className='sa-ck-link';l.textContent='Nastavitve piškotkov';l.onclick=banner;var w=document.createElement('div');w.style.marginTop='8px';w.appendChild(l);ft.appendChild(w)}
+    if(ft&&!ft.querySelector('.sa-ck-link')){var l=document.createElement('button');l.type='button';l.className='sa-ck-link';l.textContent='Nastavitve piškotkov';l.onclick=banner;var w=document.createElement('div');w.style.marginTop='8px';w.style.width='100%';if(!/zasebnost\.html/.test(location.pathname)){var z=document.createElement('a');z.href='zasebnost.html';z.className='sa-ck-link';z.textContent='Zasebnost';w.appendChild(z);w.appendChild(document.createTextNode(' · '))}w.appendChild(l);ft.appendChild(w)}
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
