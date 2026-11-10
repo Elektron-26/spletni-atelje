@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anketa za predogled · Spletni Atelje</title>
+<meta name="description" content="2 minuti, 7 vprašanj. Na podlagi odgovorov v 3 delovnih dneh pripravim brezplačen predogled vaše spletne strani.">
+<meta property="og:title" content="Kakšno stran rabi tvoje podjetje? 2-minutna anketa">
+<meta property="og:description" content="Odgovori na 7 vprašanj in v 3 delovnih dneh dobiš brezplačen predogled svoje spletne strani.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23262019'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' fill='%23d69257' text-anchor='middle'%3ESA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,440;0,9..144,560;1,9..144,440&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f3efe6;--paper-raised:#fffdf8;--paper-sunken:#eae4d6;--ink:#262019;--ink-soft:#6b5f4f;--ink-faint:#948a78;--brass:#a85d32;--brass-deep:#7a3f1f;--brass-tint:rgba(168,93,50,.1);--line:rgba(38,32,25,.13);--line-strong:rgba(38,32,25,.26);--good:#4f7a5c;--bad:#a8322f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.nav{border-bottom:1px solid var(--line)}
+.nav-inner,.wrap{max-width:680px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right))}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font-family:'Fraunces',Georgia,serif;font-weight:560;font-size:1.12rem;color:var(--ink);text-decoration:none}
+.brand span{color:var(--brass)}
+.mono{font-family:'IBM Plex Mono',monospace;letter-spacing:.06em}
+.prog{font-size:.78rem;color:var(--ink-faint)}
+.bar{height:3px;background:var(--paper-sunken)}
+.bar i{display:block;height:100%;width:0;background:var(--brass);transition:width .35s cubic-bezier(.16,1,.3,1)}
+h1,h2{font-family:'Fraunces',Georgia,serif;font-weight:440;letter-spacing:-.015em;margin:0;text-wrap:balance}
+h1{font-size:clamp(2rem,6vw,2.7rem);line-height:1.08}
+h1 em,h2 em{color:var(--brass);font-style:italic}
+h2{font-size:clamp(1.5rem,4.5vw,1.9rem);line-height:1.15}
+.intro{padding-block:40px 20px}
+.eyebrow{font-size:.76rem;text-transform:uppercase;color:var(--brass);margin-bottom:14px}
+.lede{color:var(--ink-soft);margin:16px 0 0;max-width:52ch}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.facts span{font-size:.86rem;border:1px solid var(--line-strong);border-radius:6px;padding:6px 12px;background:var(--paper-raised)}
+.step{display:none;padding-block:28px 40px}
+.step.on{display:block;animation:in .4s cubic-bezier(.16,1,.3,1)}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.step.on{animation:none}.bar i{transition:none}}
+.hint{color:var(--ink-soft);font-size:.95rem;margin:8px 0 0}
+.q{margin-top:22px;display:grid;gap:14px}
+label.f{display:grid;gap:6px;font-weight:500;font-size:.95rem}
+label.f small{font-weight:400;color:var(--ink-faint)}
+input[type=text],input[type=email],input[type=tel],input[type=url],textarea{font:inherit;font-size:16px;width:100%;padding:13px 14px;border:1px solid var(--line-strong);border-radius:10px;background:var(--paper-raised);color:var(--ink)}
+textarea{min-height:110px;resize:vertical}
+input:focus,textarea:focus{outline:2px solid var(--brass);outline-offset:1px;border-color:transparent}
+.opts{display:grid;gap:10px;margin-top:22px}
+.opts.two{grid-template-columns:1fr 1fr}
+@media (max-width:420px){.opts.two{grid-template-columns:1fr}}
+.opt{position:relative;display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1px solid var(--line-strong);border-radius:12px;background:var(--paper-raised);cursor:pointer;transition:border-color .15s,background .15s}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt .box{flex:none;width:22px;height:22px;border:1.5px solid var(--line-strong);border-radius:6px;margin-top:1px;display:grid;place-items:center;background:var(--paper)}
+.opt.radio .box{border-radius:50%}
+.opt b{display:block;font-weight:500}
+.opt span.d{display:block;font-size:.88rem;color:var(--ink-soft);margin-top:2px}
+.opt:has(input:checked){border-color:var(--brass);background:#fff7ef}
+.opt:has(input:checked) .box{background:var(--brass);border-color:var(--brass)}
+.opt:has(input:checked) .box::after{content:"";width:9px;height:5px;border:2px solid #fff;border-top:0;border-right:0;transform:rotate(-45deg) translate(1px,-1px)}
+.opt.radio:has(input:checked) .box::after{width:8px;height:8px;border:0;border-radius:50%;background:#fff;transform:none}
+.opt:has(input:focus-visible){outline:2px solid var(--brass);outline-offset:2px}
+.sw{display:flex;gap:6px;margin-top:8px}
+.sw i{width:26px;height:26px;border-radius:6px;border:1px solid rgba(0,0,0,.08)}
+.nav-btns{display:flex;gap:10px;margin-top:28px;align-items:center}
+.btn{font:inherit;font-weight:500;cursor:pointer;border-radius:10px;padding:14px 22px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);font-size:1rem}
+.btn:hover{background:var(--brass-deep);border-color:var(--brass-deep)}
+.btn.ghost{background:transparent;color:var(--ink-soft);border-color:var(--line-strong)}
+.btn.ghost:hover{color:var(--ink);background:transparent;border-color:var(--ink-faint)}
+.btn.wide{flex:1}
+.btn:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.btn[disabled]{opacity:.55;cursor:wait}
+.err{color:var(--bad);font-size:.9rem;margin-top:10px;min-height:1.2em}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;color:var(--ink-soft);margin-top:6px}
+.consent input{margin-top:4px;width:18px;height:18px;accent-color:var(--brass)}
+.consent a{color:var(--brass-deep)}
+.done{text-align:left}
+.done .tick{width:56px;height:56px;border-radius:50%;background:var(--good);display:grid;place-items:center;margin-bottom:20px}
+.done .tick::after{content:"";width:20px;height:10px;border:3px solid #fff;border-top:0;border-right:0;transform:rotate(-45deg) translate(2px,-2px)}
+.card{background:var(--paper-raised);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-top:22px}
+.card ol{margin:8px 0 0;padding-left:1.2em;color:var(--ink-soft)}
+.card li{margin:6px 0}
+footer{border-top:1px solid var(--line);color:var(--ink-faint);font-size:.82rem;padding-block:20px 40px}
+footer a{color:var(--ink-soft)}
+.hp{position:absolute;left:-9999px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header class="nav"><div class="nav-inner"><a class="brand" href="./">Spletni <span>Atelje</span></a><span class="prog mono" id="prog">2 minuti</span></div><div class="bar"><i id="bar"></i></div></header>
+
+<main class="wrap">
+<form id="f" novalidate>
+<input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+<section class="step on intro" data-s="0">
+  <div class="eyebrow mono">Brezplačen predogled</div>
+  <h1>Kakšno stran rabi <em>tvoje podjetje?</em></h1>
+  <p class="lede">Odgovori na 7 kratkih vprašanj. Na podlagi odgovorov ti v 3 delovnih dneh pripravim predogled tvoje spletne strani in ti pošljem povezavo. Odpreš jo na telefonu in vidiš, kako bi izgledala.</p>
+  <div class="facts"><span>2 minuti</span><span>Brezplačno</span><span>Brez obveznosti</span><span>Plačaš šele, ko je stran gotova</span></div>
+  <div class="nav-btns"><button type="button" class="btn wide" data-next>Začni anketo</button></div>
+</section>
+
+<section class="step" data-s="1">
+  <h2>Kako se imenuje podjetje <em>in kje ste?</em></h2>
+  <div class="q">
+    <label class="f">Ime podjetja<input type="text" name="Podjetje" id="q-podjetje" autocomplete="organization" required></label>
+    <label class="f">Kraj<input type="text" name="Kraj" id="q-kraj" autocomplete="address-level2" required></label>
+  </div>
+</section>
+
+<section class="step" data-s="2">
+  <h2>S čim se ukvarjate?</h2>
+  <div class="opts two">
+    <label class="opt radio"><input type="radio" name="Dejavnost" value="Salon / frizer / masaža" required><i class="box"></i><div><b>Salon, frizer, masaža</b></div></label>
+    <label class="opt radio"><input type="radio" name="Dejavnost" value="Obrtnik / storitve"><i class="box"></i><div><b>Obrtnik, storitve</b></div></label>
+    <label class="opt radio"><input type="radio" name="Dejavnost" value="Gostilna / kmetija / kavarna"><i class="box"></i><div><b>Gostilna, kmetija, kavarna</b></div></label>
+    <label class="opt radio"><input type="radio" name="Dejavnost" value="Izdelki / trgovina"><i class="box"></i><div><b>Izdelki, trgovina</b></div></label>
+    <label class="opt radio"><input type="radio" name="Dejavnost" value="Drugo"><i class="box"></i><div><b>Drugo</b></div></label>
+  </div>
+  <div class="q"><label class="f">Na kratko, kaj ponujate? <small>neobvezno</small><input type="text" name="Ponudba" id="q-ponudba" placeholder="npr. lash lift, manikura, pedikura"></label></div>
+</section>
+
+<section class="step" data-s="3">
+  <h2>Imate spletno stran?</h2>
+  <div class="opts">
+    <label class="opt radio"><input type="radio" name="Stran" value="Nimam" required><i class="box"></i><div><b>Nimam</b><span class="d">Samo Instagram, Facebook ali Google profil</span></div></label>
+    <label class="opt radio"><input type="radio" name="Stran" value="Imam, staro"><i class="box"></i><div><b>Imam, ampak je stara</b><span class="d">Ali pa se na telefonu ne da lepo brati</span></div></label>
+    <label class="opt radio"><input type="radio" name="Stran" value="Imam, novo"><i class="box"></i><div><b>Imam novo</b><span class="d">Zanimajo me predvsem avtomatizacije</span></div></label>
+  </div>
+  <div class="q"><label class="f">Povezava do strani ali Instagrama <small>neobvezno, od tam vzamem fotografije</small><input type="text" name="Povezava" id="q-povezava" inputmode="url" placeholder="npr. instagram.com/vas_profil"></label></div>
+</section>
+
+<section class="step" data-s="4">
+  <h2>Kaj naj stranka naredi <em>na vaši strani?</em></h2>
+  <p class="hint">Izberite vse, kar velja.</p>
+  <div class="opts">
+    <label class="opt"><input type="checkbox" name="Cilj" value="Me pokliče"><i class="box"></i><div><b>Me pokliče</b><span class="d">gumb »Pokliči«, delovni čas, lokacija</span></div></label>
+    <label class="opt"><input type="checkbox" name="Cilj" value="Rezervira termin ali mizo"><i class="box"></i><div><b>Rezervira termin ali mizo</b></div></label>
+    <label class="opt"><input type="checkbox" name="Cilj" value="Vidi cenik ali jedilnik"><i class="box"></i><div><b>Vidi cenik ali jedilnik</b></div></label>
+    <label class="opt"><input type="checkbox" name="Cilj" value="Pošlje povpraševanje"><i class="box"></i><div><b>Pošlje povpraševanje</b><span class="d">lahko tudi s sliko</span></div></label>
+    <label class="opt"><input type="checkbox" name="Cilj" value="Naroči izdelek"><i class="box"></i><div><b>Naroči izdelek</b></div></label>
+  </div>
+</section>
+
+<section class="step" data-s="5">
+  <h2>Kaj vam v tednu <em>pobere največ časa?</em></h2>
+  <p class="hint">To lahko stran naredi namesto vas. Izberite vse, kar velja.</p>
+  <div class="opts">
+    <label class="opt"><input type="checkbox" name="Cas" value="Dogovarjanje terminov"><i class="box"></i><div><b>Dogovarjanje terminov</b><span class="d">po telefonu in v sporočilih</span></div></label>
+    <label class="opt"><input type="checkbox" name="Cas" value="Odgovarjanje na cene"><i class="box"></i><div><b>Odgovarjanje »koliko stane?«</b></div></label>
+    <label class="opt"><input type="checkbox" name="Cas" value="Zbiranje naročil"><i class="box"></i><div><b>Zbiranje naročil</b><span class="d">iz maila, DM-jev in klicev</span></div></label>
+    <label class="opt"><input type="checkbox" name="Cas" value="Pozabljeni termini"><i class="box"></i><div><b>Stranke, ki pozabijo na termin</b></div></label>
+    <label class="opt"><input type="checkbox" name="Cas" value="Nic od tega"><i class="box"></i><div><b>Nič od tega</b></div></label>
+  </div>
+</section>
+
+<section class="step" data-s="6">
+  <h2>Kateri slog vam je <em>najbližje?</em></h2>
+  <div class="opts">
+    <label class="opt radio"><input type="radio" name="Slog" value="Topel, naraven" required><i class="box"></i><div><b>Topel, naraven</b><span class="d">les, zemeljske barve, domače</span><div class="sw"><i style="background:#f1e6d6"></i><i style="background:#b4532e"></i><i style="background:#4d5b45"></i></div></div></label>
+    <label class="opt radio"><input type="radio" name="Slog" value="Eleganten, temen"><i class="box"></i><div><b>Eleganten, temen</b><span class="d">premium, umirjeno, zlati poudarki</span><div class="sw"><i style="background:#1e1611"></i><i style="background:#c8960c"></i><i style="background:#efe7da"></i></div></div></label>
+    <label class="opt radio"><input type="radio" name="Slog" value="Svetel, mehek"><i class="box"></i><div><b>Svetel, mehek</b><span class="d">nežne barve, veliko prostora</span><div class="sw"><i style="background:#f7f1f0"></i><i style="background:#c98f8a"></i><i style="background:#a4545c"></i></div></div></label>
+    <label class="opt radio"><input type="radio" name="Slog" value="Odloci David"><i class="box"></i><div><b>Ne vem, odločite vi</b></div></label>
+  </div>
+</section>
+
+<section class="step" data-s="7">
+  <h2>Kam vam pošljem <em>povezavo do predogleda?</em></h2>
+  <div class="q">
+    <label class="f">Vaše ime<input type="text" name="Ime" id="q-ime" autocomplete="name" required></label>
+    <label class="f">Email<input type="email" name="email" id="q-email" autocomplete="email" placeholder="ime@primer.si"></label>
+    <label class="f">ali telefon <small>vsaj eno od obojega</small><input type="tel" name="Telefon" id="q-tel" autocomplete="tel" placeholder="041 123 456"></label>
+    <label class="f">Še kaj, kar naj vem? <small>neobvezno</small><textarea name="Opomba" id="q-opomba" placeholder="npr. odpiramo februarja, radi bi tudi angleško verzijo"></textarea></label>
+    <label class="consent"><input type="checkbox" id="q-soglasje" required><span>Strinjam se, da podatke uporabite samo za pripravo predogleda in da me kontaktirate glede njega. <a href="zasebnost.html" target="_blank" rel="noopener">Zasebnost</a></span></label>
+  </div>
+</section>
+
+<section class="step done" data-s="8">
+  <div class="tick" aria-hidden="true"></div>
+  <h2>Hvala, <em id="d-ime">zabeleženo!</em></h2>
+  <p class="lede">V 3 delovnih dneh vam pošljem povezavo do predogleda strani za <b id="d-podjetje">vaše podjetje</b>.</p>
+  <div class="card"><b>Kaj sledi</b>
+    <ol><li>Pripravim predogled z vašim imenom, ponudbo in fotografijami.</li><li>Pošljem vam povezavo. Odprete jo na telefonu.</li><li>Če vam je všeč, se dogovoriva. Če ne, predogled izbrišem in ne dolgujete nič.</li></ol>
+  </div>
+  <p class="hint" style="margin-top:22px">Vprašanja? Pišite na Instagram <b>@spletni.atelje</b> ali pokličite +386 70 845 293.</p>
+</section>
+
+<div class="nav-btns" id="nb" hidden>
+  <button type="button" class="btn ghost" data-back>Nazaj</button>
+  <button type="button" class="btn wide" data-next id="next">Naprej</button>
+</div>
+<div class="err" id="err" role="alert"></div>
+</form>
+</main>
+<footer class="wrap">Spletni Atelje · David Dokl · <a href="./">Domov</a> · <a href="zasebnost.html">Zasebnost</a></footer>
+
+<script>
+(function(){
+  var ENDPOINT='https://formsubmit.co/ajax/david@aimailerstudio.si';
+  var f=document.getElementById('f'),steps=[].slice.call(f.querySelectorAll('.step')),nb=document.getElementById('nb'),next=document.getElementById('next'),err=document.getElementById('err'),bar=document.getElementById('bar'),prog=document.getElementById('prog');
+  var cur=0,last=7;
+  var params=new URLSearchParams(location.search);
+  function show(i){
+    steps.forEach(function(s){s.classList.toggle('on',+s.dataset.s===i)});
+    cur=i;err.textContent='';
+    nb.hidden=(i===0||i===8);
+    next.textContent=i===last?'Pošlji anketo':'Naprej';
+    bar.style.width=(i===0?0:Math.min(100,i/last*100))+'%';
+    prog.textContent=i===0?'2 minuti':(i===8?'Poslano':i+' / '+last);
+    var first=steps[i].querySelector('input:not([type=hidden]):not(.hp),textarea');
+    window.scrollTo({top:0,behavior:'smooth'});
+    if(first&&first.type!=='radio'&&first.type!=='checkbox'&&i>0)setTimeout(function(){first.focus({preventScroll:true})},250);
+  }
+  function val(n){var e=f.querySelector('[name="'+n+'"]:checked')||f.querySelector('[name="'+n+'"]');return e?e.value.trim():''}
+  function checked(n){return [].slice.call(f.querySelectorAll('[name="'+n+'"]:checked')).map(function(e){return e.value})}
+  function check(i){
+    if(i===1&&(!val('Podjetje')||!val('Kraj')))return 'Prosim, vpišite ime podjetja in kraj.';
+    if(i===2&&!checked('Dejavnost').length)return 'Izberite dejavnost.';
+    if(i===3&&!checked('Stran').length)return 'Izberite eno možnost.';
+    if(i===4&&!checked('Cilj').length)return 'Izberite vsaj eno možnost.';
+    if(i===6&&!checked('Slog').length)return 'Izberite slog.';
+    if(i===7){
+      if(!val('Ime'))return 'Vpišite svoje ime.';
+      var em=val('email'),tel=val('Telefon');
+      if(!em&&!tel)return 'Vpišite email ali telefon, da vam lahko pošljem povezavo.';
+      if(em&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em))return 'Email ni pravilen.';
+      if(!document.getElementById('q-soglasje').checked)return 'Potrdite soglasje za uporabo podatkov.';
+    }
+    return '';
+  }
+  function send(){
+    var d={
+      _subject:'Nova anketa: '+val('Podjetje')+', '+val('Kraj'),
+      _template:'table',
+      _captcha:'false',
+      Podjetje:val('Podjetje'),Kraj:val('Kraj'),Dejavnost:val('Dejavnost'),Ponudba:val('Ponudba'),
+      'Ima stran':val('Stran'),Povezava:val('Povezava'),
+      'Kaj naj stranka naredi':checked('Cilj').join(', '),
+      'Kaj pobere čas':checked('Cas').join(', '),
+      Slog:val('Slog'),Ime:val('Ime'),email:val('email'),Telefon:val('Telefon'),Opomba:val('Opomba'),
+      Vir:(params.get('utm_source')||'neposredno')+' / '+(params.get('utm_medium')||'')+' / '+(params.get('utm_campaign')||''),
+      _honey:f._honey.value
+    };
+    if(!d.email)delete d.email;
+    next.disabled=true;next.textContent='Pošiljam …';
+    fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(d)})
+      .then(function(r){return r.json().catch(function(){return {}}).then(function(j){if(!r.ok||j.success==='false'||j.success===false)throw new Error(j.message||'napaka');})})
+      .then(function(){
+        document.getElementById('d-ime').textContent=(val('Ime').split(' ')[0]||'')+'!';
+        document.getElementById('d-podjetje').textContent=val('Podjetje');
+        try{window.gtag&&gtag('event','generate_lead',{form:'anketa'})}catch(e){}
+        show(8);
+      })
+      .catch(function(){
+        err.textContent='Pošiljanje ni uspelo. Poskusite še enkrat ali pišite na Instagram @spletni.atelje.';
+      })
+      .then(function(){next.disabled=false;if(cur===last)next.textContent='Pošlji anketo';});
+  }
+  f.addEventListener('click',function(e){
+    if(e.target.closest('[data-next]')){
+      var m=check(cur);if(m){err.textContent=m;return}
+      if(cur===last){send();return}
+      show(cur+1);
+    }
+    if(e.target.closest('[data-back]')&&cur>1)show(cur-1);
+  });
+  f.addEventListener('change',function(e){
+    if(e.target.type==='radio'&&cur!==3&&cur!==2){setTimeout(function(){if(!check(cur))show(cur+1)},220)}
+    if(e.target.name==='Cas'&&e.target.value==='Nic od tega'&&e.target.checked){f.querySelectorAll('[name="Cas"]').forEach(function(x){if(x!==e.target)x.checked=false})}
+    else if(e.target.name==='Cas'&&e.target.checked){var n=f.querySelector('[name="Cas"][value="Nic od tega"]');if(n)n.checked=false}
+  });
+  f.addEventListener('submit',function(e){e.preventDefault()});
+  f.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.tagName==='INPUT'&&e.target.type!=='checkbox'){e.preventDefault();next.click()}});
+})();
+</script>
+</body>
+</html>
