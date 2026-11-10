@@ -655,6 +655,18 @@
   }
 </style>
 
+<style id="sa-anketa-css">
+.sa-anketa-bar{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.35rem .9rem;background:var(--ink);color:var(--paper);font-family:'IBM Plex Mono',monospace;font-size:.82rem;letter-spacing:.01em;text-decoration:none;padding:.7rem max(16px,env(safe-area-inset-left));text-align:center}
+.sa-anketa-bar b{font-weight:500;color:#e9a37a;text-decoration:underline;text-underline-offset:3px}
+.sa-anketa-bar:hover b{text-decoration-thickness:2px}
+.sa-anketa-card{display:grid;grid-template-columns:1fr auto;align-items:center;gap:.3rem 1rem;margin-top:1.4rem;max-width:34rem;padding:1rem 1.2rem;border:1px solid var(--brass);background:var(--brass-tint);border-radius:14px;color:var(--ink);text-decoration:none;transition:transform .3s var(--ease-spring),background .3s}
+.sa-anketa-card:hover{transform:translateY(-2px);background:rgba(168,93,50,.16)}
+.sa-anketa-card .k{grid-column:1;font-family:'IBM Plex Mono',monospace;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--brass)}
+.sa-anketa-card b{grid-column:1;font-family:'Fraunces',Georgia,serif;font-weight:440;font-size:1.18rem;line-height:1.3}
+.sa-anketa-card .arr{grid-column:2;grid-row:1/3;font-size:1.4rem;color:var(--brass)}
+.sa-anketa-card:focus-visible,.sa-anketa-bar:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+</style>
+<a class="sa-anketa-bar" href="anketa.html?utm_source=landing&utm_medium=bar&utm_campaign=anketa"><span>Brezplačen predogled vaše strani v 3 dneh</span><b>Izpolni 2-minutno anketo →</b></a>
 <header class="nav">
   <div class="nav-inner">
     <a href="#top" class="brand">Spletni <span>Atelje</span></a>
@@ -676,7 +688,7 @@
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <div class="risk-note">Brez obveznosti &middot; 20 minut &middot; brez prodajnega pritiska</div>
-        <p style="margin:14px 0 6px;font-size:15px">Ste obrtnik, kmetija ali gostilna? <a href="lokalno.html" style="font-weight:700;text-decoration:underline">Brezplačen predogled vaše strani &rarr;</a></p>
+        <a class="sa-anketa-card" href="anketa.html?utm_source=landing&utm_medium=hero&utm_campaign=anketa"><span class="k">Brezplačno · 2 minuti</span><b>Izpolni anketo in v 3 dneh dobiš predogled svoje strani</b><span class="arr" aria-hidden="true">→</span></a>
         <div class="proof-line">
           <span>↓</span>
           <span>Zgrajeno doslej: <span class="mono">Offix</span> (AI CRM), <span class="mono">Kuhamo</span> (AI kuhinjski pomočnik) in <span class="mono">Vitali</span> (wellness aplikacija)</span>
