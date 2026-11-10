@@ -29,7 +29,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img{max-width:100%;display:block}
+img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 ::selection{background:#d9defd}
 .w{max-width:1180px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
@@ -177,13 +177,14 @@ header.nav.scrolled{border-bottom-color:var(--line)}
 .case-visual{border-radius:28px;padding:clamp(18px,4vw,44px);position:relative;overflow:hidden;text-decoration:none;display:block}
 .case-visual .shot{border-radius:14px;overflow:hidden;box-shadow:var(--shadow),0 0 0 1px rgba(21,22,26,.06);background:#fff;transition:transform .6s var(--ease)}
 .case-visual:hover .shot{transform:translateY(-4px) scale(1.01)}
+.case-visual .shot{max-width:620px;margin:0 auto}
 .case-visual .shot img{width:100%;height:auto}
 .case-visual .live{position:absolute;right:18px;top:18px;display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.9);font-size:12.5px;font-weight:550;box-shadow:0 4px 14px -6px rgba(0,0,0,.2)}
 .live .dot{width:7px;height:7px;border-radius:50%;background:#22a565;box-shadow:0 0 0 3px rgba(34,165,101,.2)}
 .v-offix{background:linear-gradient(150deg,#e7ecff,#f6f3ff)}
 .v-kuhamo{background:linear-gradient(150deg,#fff0e4,#fff8ef)}
 .v-vitali{background:linear-gradient(150deg,#e4f4ec,#f2fbf6)}
-.v-kuhamo .phone-in{width:min(300px,62%);margin:0 auto;border-radius:30px;padding:7px;background:var(--ink);box-shadow:0 30px 60px -24px rgba(120,60,20,.45);transition:transform .6s var(--ease)}
+.v-kuhamo .phone-in{width:min(280px,64%);margin:0 auto;border-radius:30px;padding:7px;background:var(--ink);box-shadow:0 30px 60px -24px rgba(120,60,20,.45);transition:transform .6s var(--ease)}
 .v-kuhamo:hover .phone-in{transform:translateY(-4px) rotate(-1deg)}
 .v-kuhamo .phone-in img{border-radius:24px;width:100%}
 .case-body{display:grid;gap:16px;align-content:start}
@@ -706,6 +707,7 @@ footer .sa-ck-link{font-size:13.5px}
       io.observe(el);
     });
   } else {document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')})}
+  setTimeout(function(){document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')})},3500);
   window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
 })();
 </script>
