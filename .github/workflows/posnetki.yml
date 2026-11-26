@@ -25,7 +25,7 @@ jobs:
             { id: 'p1', url: 'https://elektron-26.github.io/predogled-hari/', re: 'hari|božič|ščavnic|radgon' },
             { id: 'p2', url: 'https://elektron-26.github.io/predogled-adele/', re: 'adéle|adele' },
             { id: 'p3', url: 'https://elektron-26.github.io/predogled-malibu/', re: 'malibu|kapc|lendav' },
-            { id: 'p4', url: 'https://elektron-26.github.io/predogled-sraj/', re: 'šraj|sraj|poljčan|zagaj|ponikv|čadram' },
+            { id: 'p4', url: 'https://elektron-26.github.io/predogled-lukac/', re: 'lukač|lukac|selma|montinjan|marezig|kopr|koper' },
           ];
           const V = [['d', { width: 1440, height: 900 }, 1], ['m', { width: 390, height: 844 }, 2]];
           const out = process.argv[2];
