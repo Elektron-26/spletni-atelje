@@ -328,6 +328,28 @@ body .sa-ck button:focus-visible{outline-color:#aeb7ff}
   .hero-grid{grid-template-columns:1.12fr .88fr;gap:40px}
   .hero h1{font-size:clamp(3.6rem,5.6vw,5.2rem)}
 }
+
+/* predogledi za stranke */
+#predogledi{padding-top:0}
+.pg{display:grid;gap:64px}
+.pg-k{margin:0;display:grid;gap:22px;align-content:start}
+.pg-v{position:relative;display:block;border-radius:24px;padding:clamp(16px,3vw,30px) clamp(16px,3vw,30px) clamp(34px,6vw,56px);background:linear-gradient(150deg,#f1eee8,#fbfaf8);border:1px solid var(--line)}
+.pg-k:nth-child(2) .pg-v{background:linear-gradient(150deg,#ece6de,#f7f3ee)}
+.pg-k:nth-child(3) .pg-v{background:linear-gradient(150deg,#fff0e4,#fff8ef)}
+.pg-k:nth-child(4) .pg-v{background:linear-gradient(150deg,#e4f4ec,#f2fbf6)}
+.pg-v .d{width:84%;border-radius:12px;overflow:hidden;background:#fff;box-shadow:var(--shadow),0 0 0 1px rgba(21,22,26,.06)}
+.pg-v .d img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.pg-v .m{position:absolute;right:clamp(12px,3vw,26px);bottom:clamp(14px,2.6vw,24px);width:27%;border-radius:22px;padding:5px;background:var(--ink);box-shadow:0 24px 50px -18px rgba(21,22,26,.5);transition:transform .6s var(--ease)}
+.pg-k:hover .pg-v .m{transform:translateY(-4px) rotate(-1deg)}
+.pg-v .m img{width:100%;aspect-ratio:390/760;object-fit:cover;object-position:top;border-radius:17px}
+.pg-t{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.pg-t b{font-weight:500;color:var(--accent-ink);background:var(--accent-soft);padding:3px 9px;border-radius:999px;letter-spacing:.06em}
+.pg-k h3{font-size:clamp(1.8rem,3vw,2.3rem);margin-top:10px}
+.pg-k p{color:var(--ink-2);margin-top:10px}
+.pg-k .feat{margin-top:14px}
+.pg-foot{margin-top:64px;padding-top:28px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between}
+.pg-foot p{color:var(--muted);max-width:56ch}
+@media (min-width:900px){.pg{grid-template-columns:1fr 1fr;gap:80px 56px}}
 </style>
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -340,6 +362,7 @@ body .sa-ck button:focus-visible{outline-color:#aeb7ff}
     <a href="#top" class="brand"><span class="mark">S</span>Spletni <i>Atelje</i></a>
     <nav class="nav-links" aria-label="Glavna navigacija">
       <a href="#dokaz">Dela</a>
+      <a href="#predogledi">Predogledi</a>
       <a href="#avtomatizacije">Avtomatizacije</a>
       <a href="#cenik">Cenik</a>
       <a href="#vprasanja">Vprašanja</a>
@@ -514,6 +537,70 @@ body .sa-ck button:focus-visible{outline-color:#aeb7ff}
     </div>
 
     <p class="honest rv">Če to zgradim za lastne projekte, si predstavljajte, <em>kaj zgradim za vašega.</em></p>
+  </div>
+</section>
+
+<section id="predogledi">
+  <div class="w">
+    <div class="sec-head">
+      <div class="eyebrow rv">Predogledi za stranke</div>
+      <h2 class="rv">Tako izgleda predogled, <em>ki ga dobite v 3 dneh.</em></h2>
+      <p class="rv">Štirje predogledi, ki sem jih ta mesec pripravil za podjetja iz Pomurja in Štajerske. Imena sem skril, dokler mi stranke ne dovolijo, da jih pokažem.</p>
+    </div>
+    <div class="pg">
+      <figure class="pg-k rv">
+        <div class="pg-v" aria-hidden="true">
+          <div class="d"><img src="img/primeri/p1-d.jpg" alt="" width="1440" height="900" loading="lazy"></div>
+          <div class="m"><img src="img/primeri/p1-m.jpg" alt="" width="390" height="760" loading="lazy"></div>
+        </div>
+        <figcaption>
+          <div class="pg-t"><span>Turistična kmetija · Prlekija</span></div>
+          <h3>Domača hrana, praznovanja in sezonski dogodki</h3>
+          <p>Kosila in praznovanja, dogodki skozi leto od trgatve do božičnega foto kotička in galerija, v kateri se vsaka fotografija poveča.</p>
+          <ul class="feat"><li>Sezonski dogodki</li><li>Galerija s povečavo</li><li>Klic z enim dotikom</li></ul>
+        </figcaption>
+      </figure>
+      <figure class="pg-k rv">
+        <div class="pg-v" aria-hidden="true">
+          <div class="d"><img src="img/primeri/p2-d.jpg" alt="" width="1440" height="900" loading="lazy"></div>
+          <div class="m"><img src="img/primeri/p2-m.jpg" alt="" width="390" height="760" loading="lazy"></div>
+        </div>
+        <figcaption>
+          <div class="pg-t"><span>Studio za ročno ulite izdelke · Maribor</span></div>
+          <h3>Elegantna trgovina za izdelke, ki so se naročali samo prek Instagrama</h3>
+          <p>Temna, umirjena podoba, kolekcije in pregled izdelkov z drsenjem vstran. Kupec sam sestavi komplet, izbere odtenke in takoj vidi popust.</p>
+          <ul class="feat"><li>Sestavljanje kompleta</li><li>Kolekcije</li><li>Naročilo brez DM-jev</li></ul>
+        </figcaption>
+      </figure>
+      <figure class="pg-k rv">
+        <div class="pg-v" aria-hidden="true">
+          <div class="d"><img src="img/primeri/p3-d.jpg" alt="" width="1440" height="900" loading="lazy"></div>
+          <div class="m"><img src="img/primeri/p3-m.jpg" alt="" width="390" height="760" loading="lazy"></div>
+        </div>
+        <figcaption>
+          <div class="pg-t"><span>Okrepčevalnica in picerija · Pomurje</span></div>
+          <h3>Jedilnik, ki ga gost prebere na telefonu</h3>
+          <p>Pice, jedi z žara in terasa ob ribniku. Jedilnik s cenami, delovni čas, pot do lokala in klic z enim dotikom.</p>
+          <ul class="feat"><li>Jedilnik s cenami</li><li>Več podstrani</li><li>Zemljevid in klic</li></ul>
+        </figcaption>
+      </figure>
+      <figure class="pg-k rv">
+        <div class="pg-v" aria-hidden="true">
+          <div class="d"><img src="img/primeri/p4-d.jpg" alt="" width="1440" height="900" loading="lazy"></div>
+          <div class="m"><img src="img/primeri/p4-m.jpg" alt="" width="390" height="760" loading="lazy"></div>
+        </div>
+        <figcaption>
+          <div class="pg-t"><span>Kmetija s kokošmi nesnicami · Štajerska</span><b>Spletna aplikacija</b></div>
+          <h3>Spletno naročanje namesto telefonskih klicev</h3>
+          <p>Kupec izbere pasmo, število in termin prevzema na hlevu ali dostavo v svoj kraj. Potrditev dobi takoj, dan pred prevzemom pa še opomnik.</p>
+          <ul class="feat"><li>Spletno naročilo</li><li>Termini in dostava</li><li>Samodejni opomniki</li></ul>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="pg-foot rv">
+      <p>Predogled za vaše podjetje pripravim zastonj, z vašimi fotografijami in ponudbo. Če vam ni všeč, ne dolgujete nič.</p>
+      <a class="btn btn-primary" href="anketa.html?utm_source=landing&amp;utm_medium=predogledi&amp;utm_campaign=anketa">Želim svoj predogled <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
   </div>
 </section>
 
